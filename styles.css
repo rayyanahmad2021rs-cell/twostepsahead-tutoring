@@ -1097,6 +1097,12 @@ ul {
   margin-bottom: 20px;
 }
 
+.form-optional {
+  font-weight: 400;
+  color: var(--gray-400);
+  font-size: 0.8rem;
+}
+
 .form-group label {
   display: block;
   font-size: 0.85rem;
