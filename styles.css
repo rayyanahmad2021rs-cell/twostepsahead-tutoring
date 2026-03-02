@@ -81,6 +81,10 @@ ul {
   color: var(--blue);
 }
 
+body.menu-open {
+  overflow: hidden;
+}
+
 /* ============================
    NAVIGATION
    ============================ */
@@ -925,6 +929,161 @@ ul {
 }
 
 /* ============================
+   TESTIMONIALS
+   ============================ */
+.testimonials {
+  padding: 100px 0;
+  background: var(--gray-50);
+}
+
+.testimonials-carousel {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.carousel-viewport {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonial-card {
+  min-width: 100%;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 40px 36px;
+  border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.testimonial-stars {
+  font-size: 1.3rem;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.testimonial-text {
+  font-size: 0.95rem;
+  color: var(--gray-600);
+  line-height: 1.8;
+  flex-grow: 1;
+  margin-bottom: 28px;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 20px;
+  border-top: 1px solid var(--gray-100);
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.testimonial-info strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.testimonial-info span {
+  font-size: 0.82rem;
+  color: var(--gray-400);
+  font-weight: 500;
+}
+
+/* Carousel arrows */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-calc(50% + 20px));
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--gray-200);
+  background: var(--white);
+  color: var(--navy);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  z-index: 2;
+}
+
+.carousel-arrow svg {
+  width: 20px;
+  height: 20px;
+}
+
+.carousel-arrow:hover {
+  background: var(--navy);
+  color: var(--white);
+  border-color: var(--navy);
+  box-shadow: var(--shadow-lg);
+}
+
+.carousel-prev {
+  left: -72px;
+}
+
+.carousel-next {
+  right: -72px;
+}
+
+/* Carousel dots */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 32px;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: var(--gray-300);
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 0;
+}
+
+.carousel-dot:hover {
+  background: var(--gray-400);
+}
+
+.carousel-dot.active {
+  background: var(--blue);
+  transform: scale(1.2);
+}
+
+/* ============================
    REFUND POLICY
    ============================ */
 .refund-policy {
@@ -1222,6 +1381,14 @@ ul {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .carousel-prev {
+    left: -56px;
+  }
+
+  .carousel-next {
+    right: -56px;
+  }
+
   .founder-credentials {
     grid-template-columns: 1fr;
   }
@@ -1230,11 +1397,11 @@ ul {
 @media (max-width: 768px) {
   .nav-links {
     display: none;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100vw;
+    height: 100vh;
     background: var(--navy);
     flex-direction: column;
     align-items: center;
@@ -1245,16 +1412,20 @@ ul {
 
   .nav-links.active {
     display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
   }
 
   .nav-links a {
     font-size: 1.2rem;
-    color: var(--white);
+    color: var(--white) !important;
   }
 
   .hamburger {
     display: flex;
-    z-index: 1001;
+    z-index: 1002;
+    position: relative;
   }
 
   .hero {
@@ -1296,6 +1467,42 @@ ul {
 
   .why-grid {
     grid-template-columns: 1fr;
+  }
+
+  .testimonials-carousel {
+    max-width: 100%;
+  }
+
+  .carousel-arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .carousel-arrow svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .carousel-prev {
+    left: -4px;
+    top: auto;
+    bottom: -56px;
+    transform: none;
+  }
+
+  .carousel-next {
+    right: -4px;
+    top: auto;
+    bottom: -56px;
+    transform: none;
+  }
+
+  .carousel-dots {
+    margin-top: 16px;
+  }
+
+  .testimonial-card {
+    padding: 28px 22px;
   }
 
   .contact-wrapper {
